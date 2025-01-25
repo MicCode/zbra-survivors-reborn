@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://1elgf8w0j8sq"]
+
+[ext_resource type="Script" path="res://scenes/spawner.gd" id="1_bn5b0"]
+[ext_resource type="PackedScene" uid="uid://b1hlgo7gy7pyg" path="res://scenes/enemy.tscn" id="2_tls21"]
+[ext_resource type="Script" path="res://scenes/EnemyType.gd" id="3_5n3w7"]
+[ext_resource type="Resource" uid="uid://bf2d4qk818lyh" path="res://resources/enemy1.tres" id="4_s6cfh"]
+[ext_resource type="Resource" uid="uid://iie40js5jfkc" path="res://resources/enemy2.tres" id="5_nyjak"]
+[ext_resource type="Resource" uid="uid://bk8v46pfawnaf" path="res://resources/enemy3.tres" id="6_bkpda"]
+[ext_resource type="Resource" uid="uid://dyk1je2hxalia" path="res://resources/enemy4.tres" id="7_j3ad8"]
+[ext_resource type="Resource" uid="uid://0y6aahq2jjjw" path="res://resources/enemy5.tres" id="8_baehf"]
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_bn5b0")
+enemy = ExtResource("2_tls21")
+enemy_types = Array[ExtResource("3_5n3w7")]([ExtResource("4_s6cfh"), ExtResource("5_nyjak"), ExtResource("6_bkpda"), ExtResource("7_j3ad8"), ExtResource("8_baehf")])
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -60.0
+offset_top = 8.0
+offset_right = -9.0
+offset_bottom = 31.0
+grow_horizontal = 0
+pivot_offset = Vector2(51, 0)
+size_flags_vertical = 4
+
+[node name="Minute" type="Label" parent="UI/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "00"
+
+[node name="Label2" type="Label" parent="UI/HBoxContainer"]
+layout_mode = 2
+text = ":"
+
+[node name="Second" type="Label" parent="UI/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "00"
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Pattern" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="Elite" type="Timer" parent="."]
+wait_time = 9.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Pattern" to="." method="_on_pattern_timeout"]
+[connection signal="timeout" from="Elite" to="." method="_on_elite_timeout"]
