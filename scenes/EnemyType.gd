@@ -2,6 +2,6 @@ extends Resource
 class_name EnemyType
 
 @export var title: String
-@export var texture: Texture2D
+@export var frames: SpriteFrames
 @export var health: float
 @export var damage: float

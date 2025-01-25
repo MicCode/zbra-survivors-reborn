@@ -1,11 +1,33 @@
-[gd_resource type="Resource" script_class="EnemyType" load_steps=3 format=3 uid="uid://bk8v46pfawnaf"]
+[gd_resource type="Resource" script_class="EnemyType" load_steps=6 format=3 uid="uid://bk8v46pfawnaf"]
 
 [ext_resource type="Script" path="res://scenes/EnemyType.gd" id="1_c3xtv"]
-[ext_resource type="Texture2D" uid="uid://bh6g8gvdk7ufc" path="res://assets/enemy3.png" id="2_w245b"]
+[ext_resource type="Texture2D" uid="uid://bh6g8gvdk7ufc" path="res://assets/enemies/enemy3.png" id="1_jjcqv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3n0as"]
+atlas = ExtResource("1_jjcqv")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqae8"]
+atlas = ExtResource("1_jjcqv")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k448e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3n0as")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqae8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_c3xtv")
 title = "Enemy3"
-texture = ExtResource("2_w245b")
+frames = SubResource("SpriteFrames_k448e")
 health = 0.0
 damage = 5.0

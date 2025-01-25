@@ -1,11 +1,33 @@
-[gd_resource type="Resource" script_class="EnemyType" load_steps=3 format=3 uid="uid://bf2d4qk818lyh"]
+[gd_resource type="Resource" script_class="EnemyType" load_steps=6 format=3 uid="uid://bf2d4qk818lyh"]
 
 [ext_resource type="Script" path="res://scenes/EnemyType.gd" id="1_bxpmi"]
-[ext_resource type="Texture2D" uid="uid://datmm111uh12h" path="res://assets/enemy1.png" id="2_odkf2"]
+[ext_resource type="Texture2D" uid="uid://datmm111uh12h" path="res://assets/enemies/enemy1.png" id="2_sv4u2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p80h8"]
+atlas = ExtResource("2_sv4u2")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr7r3"]
+atlas = ExtResource("2_sv4u2")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sdrcn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p80h8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pr7r3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [resource]
 script = ExtResource("1_bxpmi")
 title = "Enemy1"
-texture = ExtResource("2_odkf2")
+frames = SubResource("SpriteFrames_sdrcn")
 health = 0.0
 damage = 1.0
